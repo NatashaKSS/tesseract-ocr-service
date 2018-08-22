@@ -1,5 +1,6 @@
 # Tesseract OCR Service
 An AWS Lambda function that performs OCR on an image hosted at a specified URL
+<br/>
 
 # Deploying & Testing
 A menu of options is provided with
@@ -7,6 +8,7 @@ A menu of options is provided with
 npm run start
 ```
 This allows you to deploy the service to AWS Lambda or run it locally.
+<br/>
 
 # API
 

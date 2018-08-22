@@ -1,0 +1,22 @@
+service: tesseract-ocr-service
+
+provider:
+  name: aws
+  runtime: nodejs8.10
+  stage: ${opt:stage, 'prod'}
+  region: ap-southeast-1
+
+functions:
+  handler:
+    name: tesseract-ocr-service-handler
+    description: Performs OCR on an image hosted at a URL and returns its text
+    handler: index.handler
+    events:
+      - http:
+          path: /ocr
+          method: get
+    memorySize: 256
+    timeout: 20
+
+plugins:
+  - serverless-offline

@@ -1,0 +1,27 @@
+{
+  "name": "tesseract-ocr-service",
+  "description": "An AWS Lambda function that performs OCR on an image hosted at a URL and returns its text",
+  "authors": "Natasha Koh Sze Sze",
+  "version": "1.0.0",
+  "license": "(ISC OR GPL-3.0)",
+  "scripts": {
+    "start": "npx ntl --descriptions",
+    "start-offline": "serverless offline start",
+    "run-func-local": "serverless invoke local --function serve",
+    "deploy-func-serve-dev": "serverless deploy function --function serve --stage dev",
+    "deploy-dev": "serverless deploy --stage dev",
+    "deploy-prod": "serverless deploy --stage prod"
+  },
+  "dependencies": {
+    "fs-extra": "^5.0.0",
+    "request": "^2.83.0",
+    "request-promise-native": "^1.0.5",
+    "serverless": "^1.29.2",
+    "tesseract-lambda": "^0.0.1",
+    "tesseract.js": "^1.0.10"
+  },
+  "devDependencies": {
+    "ntl": "^3.0.0",
+    "serverless-offline": "^3.25.9"
+  }
+}
