@@ -9,6 +9,7 @@
     "start-offline": "serverless offline start",
     "run-func-local": "serverless invoke local --function serve",
     "deploy-func-serve-dev": "serverless deploy function --function serve --stage dev",
+    "deploy-func-serve-prod": "serverless deploy function --function serve --stage prod",
     "deploy-dev": "serverless deploy --stage dev",
     "deploy-prod": "serverless deploy --stage prod"
   },
