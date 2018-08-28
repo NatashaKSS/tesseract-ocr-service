@@ -18,7 +18,8 @@
     "request-promise-native": "^1.0.5",
     "serverless": "^1.29.2",
     "tesseract-lambda": "^0.0.1",
-    "tesseract.js": "^1.0.10"
+    "tesseract.js": "^1.0.10",
+    "uuid": "^3.3.2"
   },
   "devDependencies": {
     "ntl": "^3.0.0",
