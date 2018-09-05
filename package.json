@@ -1,31 +1,54 @@
 {
   "name": "tesseract-ocr-service",
-  "description": "An AWS Lambda function that performs OCR on an image hosted at a URL and returns its text",
-  "authors": "Natasha Koh Sze Sze",
+  "description": "A NodeJS web service that performs OCR on an image hosted at a URL",
   "version": "1.0.0",
-  "license": "(ISC OR GPL-3.0)",
+  "main": "app.js",
   "scripts": {
-    "start": "npx ntl --descriptions",
-    "start-offline": "serverless offline start",
-    "run-func-local": "serverless invoke local --function serve",
-    "deploy-func-serve-dev": "serverless deploy function --function handler --stage dev",
-    "deploy-func-serve-prod": "serverless deploy function --function handler --stage prod",
-    "deploy-dev": "serverless deploy --stage dev",
-    "deploy-prod": "serverless deploy --stage prod"
+    "start": "npm run build && npm run start-prod",
+    "build": "babel src -d dist",
+    "start-prod": "node dist/app.js",
+    "start-dev": "nodemon --exec babel-node src/app.js",
+    "test": "mocha --require babel-core/register './src/**/test/*.test.js'"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NatashaKSS/node-express-barebones.git"
+  },
+  "author": "Natasha Koh Sze Sze",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/NatashaKSS/node-express-barebones/issues"
+  },
+  "homepage": "https://github.com/NatashaKSS/node-express-barebones#readme",
   "dependencies": {
+    "body-parser": "^1.17.2",
+    "express": "^4.15.3",
     "fs-extra": "^5.0.0",
     "path": "^0.12.7",
     "request": "^2.83.0",
     "request-promise-native": "^1.0.5",
-    "serverless": "^1.29.2",
     "tesseract-lambda": "^0.0.1",
     "tesseract.js": "^1.0.10",
     "tesseract.js-core": "^1.0.2",
     "uuid": "^3.3.2"
   },
   "devDependencies": {
-    "ntl": "^3.0.0",
-    "serverless-offline": "^3.25.9"
-  }
+    "babel-cli": "^6.24.1",
+    "babel-core": "^6.26.3",
+    "babel-eslint": "^8.2.3",
+    "babel-preset-env": "^1.7.0",
+    "chai": "^4.1.2",
+    "eslint": "^4.19.1",
+    "eslint-config-airbnb": "^16.1.0",
+    "eslint-plugin-import": "^2.11.0",
+    "eslint-plugin-jasmine": "^2.10.1",
+    "eslint-plugin-jsx-a11y": "^6.0.3",
+    "eslint-plugin-node": "^6.0.1",
+    "mocha": "^4.0.1",
+    "nodemon": "^1.11.0"
+  },
+  "engines": {
+    "node": "10.1.0"
+  },
+  "keywords": []
 }

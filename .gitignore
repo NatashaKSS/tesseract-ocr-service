@@ -1,5 +1,5 @@
-# Package directories
+*.log
+.idea
+.env
 node_modules
-
-# Serverless directories
-.serverless
+dist
