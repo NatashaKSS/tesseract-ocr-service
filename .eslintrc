@@ -1,0 +1,20 @@
+{
+  "extends": ["airbnb", "plugin:jasmine/recommended"],
+  "parser": "babel-eslint",
+  "plugins": ["jasmine"],
+  "ecmaFeatures": {
+    "classes": true
+  },
+  "env": {
+    "jasmine": true
+  },
+  "rules": {
+    "function-paren-newline": ["error", { "minItems": 5 }],
+    "no-use-before-define": ["error", { "variables": false }],
+    "global-require": "off",
+    "arrow-body-style": ["off", "as-needed"]
+  },
+  "globals": {
+    "fetch": true
+  }
+}
