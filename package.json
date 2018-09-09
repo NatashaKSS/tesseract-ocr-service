@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "npm run build && npm run start-prod",
-    "build": "babel src -d dist",
+    "build": "babel src --out-dir dist --ignore src/lib --copy-files src/lib",
     "start-prod": "node dist/index.js",
     "start-dev": "nodemon --inspect ./src --exec babel-node src/index.js",
     "test": "mocha --require babel-core/register './src/**/test/*.test.js'"
@@ -24,19 +24,19 @@
     "body-parser": "^1.17.2",
     "express": "^4.15.3",
     "fs-extra": "^5.0.0",
+    "lodash": "^4.17.10",
     "path": "^0.12.7",
     "request": "^2.83.0",
     "request-promise-native": "^1.0.5",
-    "tesseract-lambda": "^0.0.1",
     "tesseract.js": "^1.0.10",
     "tesseract.js-core": "^1.0.2",
     "uuid": "^3.3.2"
   },
   "devDependencies": {
-    "babel-cli": "^6.24.1",
-    "babel-core": "^6.26.3",
+    "@babel/cli": "^7.0.0",
+    "@babel/core": "^7.0.0",
+    "@babel/preset-env": "^7.0.0",
     "babel-eslint": "^8.2.3",
-    "babel-preset-env": "^1.7.0",
     "chai": "^4.1.2",
     "eslint": "^4.19.1",
     "eslint-config-airbnb": "^16.1.0",
