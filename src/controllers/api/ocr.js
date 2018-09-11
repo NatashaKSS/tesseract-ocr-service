@@ -18,11 +18,19 @@ export const ocr = (req, res) => {
       return Tesseract.recognize(data);
     })
     .then((result) => {
-      console.log(`[Tesseract Recognize Finish] result.text: ${result.text}`);
+      console.log(`Tesseract is done recognizing...result: ${result.text}`);
       Tesseract.terminate();
+      res.status(200).json({ result: result.text });
     })
     .catch(error => {
-      console.log(`ERROR requesting ${imageURL}: ${JSON.stringify(error)}`);
+      let errorMessage = `Error requesting image URL '${imageURL}' because: ${JSON.stringify(error, null, 2)}`;
+      console.log(`[ERROR] ${errorMessage}.`);
+
+      if (error.name === "RequestError") {
+        res.status(400).json({ error: errorMessage });
+      } else {
+        res.status(500).json({ error: errorMessage });
+      }
     });
   }
 };
