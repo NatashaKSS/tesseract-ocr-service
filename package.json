@@ -1,4 +1,3 @@
-// set local ./node_modules/... ref to babel
 {
   "name": "tesseract-ocr-service",
   "description": "A NodeJS web service that performs OCR on an image hosted at a URL",
