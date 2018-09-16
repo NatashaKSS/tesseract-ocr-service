@@ -4,7 +4,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "start": "npm run build && npm run start-prod",
+    "start": "npm run start-prod",
     "build": "babel src --out-dir dist --ignore src/lib --copy-files src/lib",
     "start-prod": "node dist/index.js",
     "start-dev": "nodemon --exec babel-node src/index.js",
@@ -32,10 +32,10 @@
     "uuid": "^3.3.2",
     "@babel/cli": "^7.0.0",
     "@babel/core": "^7.0.0",
-    "@babel/node": "^7.0.0"
+    "@babel/node": "^7.0.0",
+    "@babel/preset-env": "^7.0.0"
   },
   "devDependencies": {
-    "@babel/preset-env": "^7.0.0",
     "babel-eslint": "^8.2.3",
     "chai": "^4.1.2",
     "eslint": "^4.19.1",
