@@ -1,39 +1,41 @@
 {
   "name": "tesseract-ocr-service",
-  "description": "A NodeJS web service that performs OCR on an image hosted at a URL",
+  "description": "An AWS Lambda function that performs OCR on an image hosted at a URL and returns its text",
   "version": "1.0.0",
-  "main": "index.js",
   "scripts": {
-    "start": "npm run start-prod",
-    "build": "babel src --out-dir dist --ignore src/lib --copy-files src/lib",
-    "start-prod": "node dist/index.js",
-    "start-dev": "nodemon --exec babel-node src/index.js",
+    "start": "npm run build && npx ntl --descriptions",
+    "build": "babel src --out-dir dist",
+    "start-offline": "serverless offline start",
+    "run-func-local": "serverless invoke local --function serve",
+    "deploy-func-serve-dev": "serverless deploy function --function handler --stage dev",
+    "deploy-func-serve-prod": "serverless deploy function --function handler --stage prod",
+    "deploy-dev": "serverless deploy --stage dev",
+    "deploy-prod": "serverless deploy --stage prod",
     "test": "mocha --require babel-core/register './src/**/test/*.test.js'"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/NatashaKSS/node-express-barebones.git"
+    "url": "git+https://github.com/NatashaKSS/tesseract-ocr-service.git"
   },
   "author": "Natasha Koh Sze Sze",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/NatashaKSS/node-express-barebones/issues"
+    "url": "https://github.com/NatashaKSS/tesseract-ocr-service/issues"
   },
-  "homepage": "https://github.com/NatashaKSS/node-express-barebones#readme",
+  "homepage": "https://github.com/NatashaKSS/tesseract-ocr-service",
   "dependencies": {
-    "body-parser": "^1.17.2",
-    "express": "^4.15.3",
+    "@babel/cli": "^7.0.0",
+    "@babel/core": "^7.0.0",
+    "@babel/node": "^7.0.0",
+    "@babel/preset-env": "^7.0.0",
     "lodash": "^4.17.10",
     "path": "^0.12.7",
     "request": "^2.83.0",
     "request-promise-native": "^1.0.5",
+    "serverless": "^1.32.0",
     "tesseract.js": "^1.0.10",
     "tesseract.js-core": "^1.0.2",
-    "uuid": "^3.3.2",
-    "@babel/cli": "^7.0.0",
-    "@babel/core": "^7.0.0",
-    "@babel/node": "^7.0.0",
-    "@babel/preset-env": "^7.0.0"
+    "uuid": "^3.3.2"
   },
   "devDependencies": {
     "babel-eslint": "^8.2.3",
@@ -44,11 +46,13 @@
     "eslint-plugin-jasmine": "^2.10.1",
     "eslint-plugin-jsx-a11y": "^6.0.3",
     "eslint-plugin-node": "^6.0.1",
+    "eslint-plugin-react": "^7.11.1",
     "mocha": "^4.0.1",
-    "nodemon": "^1.11.0"
+    "ntl": "^3.0.0",
+    "serverless-offline": "^3.25.12"
   },
   "engines": {
-    "node": "8.x"
+    "node": "10.x"
   },
   "keywords": []
 }

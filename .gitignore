@@ -1,6 +1,7 @@
 *.log
 .idea
 .env
+.serverless
 node_modules
 dist
 .vscode
