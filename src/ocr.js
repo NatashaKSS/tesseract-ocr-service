@@ -16,8 +16,6 @@ module.exports.ocr = (event, context, callback) => {
     rp(imageURL, { encoding: null })
       .then(data => Tesseract.recognize(data))
       .then((result) => {
-        console.log(`Tesseract is done recognizing...result: ${result.text}`);
-
         Tesseract.terminate();
 
         callback(null, {
@@ -26,21 +24,17 @@ module.exports.ocr = (event, context, callback) => {
         });
       })
       .catch((error) => {
-        const errorMessage = `[ERROR] Error requesting image URL '${imageURL}' 
-          because: ${JSON.stringify(error, null, 2)}.`;
-        console.log(errorMessage);
+        const errorMessage = `[ERROR] Error requesting image URL '${imageURL}' because: ${JSON.stringify(error, null, 2)}.`;
 
         if (error.name === 'RequestError') {
-          const statusCode = 400;
           callback(null, {
-            statusCode,
-            body: JSON.stringify({ statusCode, error: errorMessage }),
+            statusCode: 400,
+            body: JSON.stringify({ error: errorMessage }),
           });
         } else {
-          const statusCode = 500;
           callback(null, {
-            statusCode,
-            body: JSON.stringify({ statusCode, error: errorMessage }),
+            statusCode: 500,
+            body: JSON.stringify({ error: errorMessage }),
           });
         }
       });
