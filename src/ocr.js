@@ -18,23 +18,26 @@ module.exports.ocr = (event, context, callback) => {
       .then((result) => {
         Tesseract.terminate();
 
+        console.log(`Result: ${JSON.stringify(result)}`);
+
         callback(null, {
           statusCode: 200,
           body: JSON.stringify({ result: result.text }),
         });
       })
       .catch((error) => {
-        const errorMessage = `[ERROR] Error requesting image URL '${imageURL}' because: ${JSON.stringify(error, null, 2)}.`;
+        const errorMessage = `Error requesting image URL '${imageURL}' because: ${JSON.stringify(error, null, 2)}.`;
+        console.log(errorMessage);
 
         if (error.name === 'RequestError') {
           callback(null, {
             statusCode: 400,
-            body: JSON.stringify({ error: errorMessage }),
+            body: JSON.stringify({ statusCode: 400, error: errorMessage }),
           });
         } else {
           callback(null, {
             statusCode: 500,
-            body: JSON.stringify({ error: errorMessage }),
+            body: JSON.stringify({ statusCode: 500, error: errorMessage }),
           });
         }
       });
