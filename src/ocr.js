@@ -15,19 +15,17 @@ module.exports.ocr = (event, context, callback) => {
 
     rp(imageURL, { encoding: null })
       .then(data => Tesseract.recognize(data))
-      .then((result) => {
+      .then(result => {
         Tesseract.terminate();
-
-        console.log(`Result: ${JSON.stringify(result)}`);
 
         callback(null, {
           statusCode: 200,
           body: JSON.stringify({ result: result.text }),
         });
       })
-      .catch((error) => {
+      .catch(error => {
         const errorMessage = `Error requesting image URL '${imageURL}' because: ${JSON.stringify(error, null, 2)}.`;
-        console.log(errorMessage);
+        console.error(errorMessage);
 
         if (error.name === 'RequestError') {
           callback(null, {
