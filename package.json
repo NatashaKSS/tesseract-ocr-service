@@ -12,6 +12,18 @@
     "deploy-prod": "serverless deploy --stage prod",
     "test": "mocha --require @babel/register './src/**/test/*.test.js'"
   },
+  "ntl": {
+    "descriptions": {
+      "start": "Build src & Show command menu",
+      "build": "Build src",
+      "start-offline": "Spin up offline serverless instance",
+      "deploy-func-serve-dev": "Deploy only function to DEV env",
+      "deploy-func-serve-prod": "Deploy only function to PROD env",
+      "deploy-dev": "Deploy service to DEV env",
+      "deploy-prod": "Deploy service to PROD env",
+      "test": "Run unit tests"
+    }
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/NatashaKSS/tesseract-ocr-service.git"
