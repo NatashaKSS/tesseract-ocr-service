@@ -35,7 +35,7 @@
   },
   "homepage": "https://github.com/NatashaKSS/tesseract-ocr-service",
   "dependencies": {
-    "lodash": "^4.17.19",
+    "lodash": "^4.17.21",
     "path": "^0.12.7",
     "request": "^2.83.0",
     "request-promise-native": "^1.0.7",
